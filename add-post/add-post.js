@@ -28,8 +28,6 @@ addPostForm.addEventListener('submit', async (e) => {
     } else {
         location.replace('/');
     }
-
-    //if no error redirect home
 });
 
 //display
