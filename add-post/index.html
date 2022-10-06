@@ -39,6 +39,19 @@
             </nav>
         </header>
 
-        <main>form</main>
+        <main>
+            <form id="add-post-form">
+                <label><input type="text" name="title" placeholder="Title..." required /></label>
+                <textarea
+                    name="content"
+                    cols="30"
+                    rows="10"
+                    required
+                    placeholder="Content..."
+                ></textarea>
+                <button>Post</button>
+                <p id="error-display">error!</p>
+            </form>
+        </main>
     </body>
 </html>
