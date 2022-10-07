@@ -50,7 +50,7 @@ addCommentForm.addEventListener('submit', async (e) => {
         displayError();
     } else {
         const addedComment = response.data;
-        comments.unshift(newComment);
+        comments.unshift(addedComment);
         displayComments();
     }
 
