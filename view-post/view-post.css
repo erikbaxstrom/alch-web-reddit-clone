@@ -2,4 +2,5 @@ li {
     background-color: beige;
     margin: 5px;
     padding: 5px;
+    border: 1px solid black;
 }
