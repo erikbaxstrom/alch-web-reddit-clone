@@ -13,11 +13,24 @@ let posts = [];
 /* Events */
 window.addEventListener('load', async () => {
     //get posts
-    posts = await getPosts();
-    console.log(posts);
+    const response = await getPosts();
+    error = response.error;
+    if (error) {
+        displayError();
+    } else {
+        posts = response.data;
+        displayPosts();
+    }
     // error handling (display error if exists)
     // assign posts to state
     // display posts
 });
 
 /* Display Functions */
+function displayError() {
+    console.log('there was an error. it was a bad one');
+}
+
+function displayPosts() {
+    console.log('there were some posts', posts);
+}

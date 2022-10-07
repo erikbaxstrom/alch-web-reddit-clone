@@ -35,5 +35,6 @@ export async function addNewPost(newPost) {
 }
 
 export async function getPosts() {
-    return 'yup, i gottem.';
+    const response = client.from('posts').select('*').order('created_at', { ascending: false });
+    return await response;
 }
