@@ -42,8 +42,19 @@ addCommentForm.addEventListener('submit', async (e) => {
         comment: formData.get('comment'),
         post_id: post.id,
     };
-
     const response = await createComment(newComment);
+    error = response.error;
+
+    if (error) {
+        console.error(error);
+        displayError();
+    } else {
+        const addedComment = response.data;
+        comments.unshift(newComment);
+        displayComments();
+    }
+
+    addCommentForm.reset();
 });
 
 //display
@@ -58,6 +69,7 @@ function displayPost() {
 }
 
 function displayComments() {
+    commentList.textContent = '';
     for (let comment of comments) {
         const commentEl = renderComment(comment);
         commentList.append(commentEl);
