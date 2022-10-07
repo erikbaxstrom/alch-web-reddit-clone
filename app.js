@@ -2,6 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 import { getPosts } from '/fetch-utils.js';
+import { renderPost } from './render-utils.js';
 /* Get DOM Elements */
 const cards = document.getElementById('cards');
 const errorDisplay = document.getElementById('error-display');
@@ -21,16 +22,24 @@ window.addEventListener('load', async () => {
         posts = response.data;
         displayPosts();
     }
-    // error handling (display error if exists)
-    // assign posts to state
-    // display posts
 });
 
 /* Display Functions */
 function displayError() {
-    console.log('there was an error. it was a bad one');
+    console.error(error);
+    errorDisplay.textContent = error.message;
 }
 
 function displayPosts() {
-    console.log('there were some posts', posts);
+    cards.textContent = '';
+    for (let post of posts) {
+        const postEl = renderPost(post);
+        cards.append(postEl);
+    }
 }
+
+// content: 'asdf';
+// created_at: '2022-10-06T22:20:43.514843+00:00';
+// id: 1;
+// title: 'asdf';
+// user_id: 'd7b6b579-2ae5-4c2e-9a09-0d0daaa9224a';
