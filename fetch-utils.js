@@ -38,3 +38,8 @@ export async function getPosts() {
     const response = client.from('posts').select('*').order('created_at', { ascending: false });
     return await response;
 }
+
+export async function getPost(id) {
+    const response = client.from('posts').select('*').eq('id', id).single();
+    return await response;
+}
