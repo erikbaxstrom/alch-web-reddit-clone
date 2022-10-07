@@ -40,7 +40,12 @@ export async function getPosts() {
 }
 
 export async function getPost(id) {
-    const response = client.from('posts').select('*').eq('id', id).single();
+    const response = client
+        .from('posts')
+        .select('*, comments(*)')
+        .eq('id', id)
+        .order('created_at', { foreignTable: 'comments', ascending: false })
+        .single();
     return await response;
 }
 

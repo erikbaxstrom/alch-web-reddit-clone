@@ -1,6 +1,7 @@
 //import
 import { getPost, createComment } from '../fetch-utils.js';
 import '/auth/user.js';
+import { renderComment } from '../render-utils.js';
 
 // get dom
 const postDiv = document.getElementById('post');
@@ -8,9 +9,11 @@ const postH2 = postDiv.querySelector('h2');
 const postP = postDiv.querySelector('p');
 const errorDisplay = document.getElementById('error-display');
 const addCommentForm = document.getElementById('add-comment-form');
+const commentList = document.getElementById('comments');
 
 // state
 let post = null;
+let comments = null;
 let error = null;
 
 // events
@@ -26,7 +29,9 @@ window.addEventListener('load', async () => {
         displayError();
     } else {
         post = response.data;
+        comments = post.comments;
         displayPost();
+        displayComments();
     }
 });
 
@@ -39,7 +44,6 @@ addCommentForm.addEventListener('submit', async (e) => {
     };
 
     const response = await createComment(newComment);
-    console.log(response);
 });
 
 //display
@@ -51,4 +55,11 @@ function displayError() {
 function displayPost() {
     postH2.textContent = post.title;
     postP.textContent = post.content;
+}
+
+function displayComments() {
+    for (let comment of comments) {
+        const commentEl = renderComment(comment);
+        commentList.append(commentEl);
+    }
 }
