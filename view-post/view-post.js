@@ -4,6 +4,9 @@ import '/auth/user.js';
 
 // get dom
 const postDiv = document.getElementById('post');
+const postH2 = postDiv.querySelector('h2');
+const postP = postDiv.querySelector('p');
+const errorDisplay = document.getElementById('error-display');
 
 // state
 let post = null;
@@ -33,5 +36,6 @@ function displayError() {
 }
 
 function displayPost() {
-    console.log(post);
+    postH2.textContent = post.title;
+    postP.textContent = post.content;
 }
