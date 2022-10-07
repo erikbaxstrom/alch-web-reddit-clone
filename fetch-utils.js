@@ -43,3 +43,8 @@ export async function getPost(id) {
     const response = client.from('posts').select('*').eq('id', id).single();
     return await response;
 }
+
+export async function createComment(comment) {
+    const response = client.from('comments').insert(comment).single();
+    return await response;
+}

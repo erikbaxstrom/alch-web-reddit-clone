@@ -1,5 +1,5 @@
 //import
-import { getPost } from '../fetch-utils.js';
+import { getPost, createComment } from '../fetch-utils.js';
 import '/auth/user.js';
 
 // get dom
@@ -7,6 +7,7 @@ const postDiv = document.getElementById('post');
 const postH2 = postDiv.querySelector('h2');
 const postP = postDiv.querySelector('p');
 const errorDisplay = document.getElementById('error-display');
+const addCommentForm = document.getElementById('add-comment-form');
 
 // state
 let post = null;
@@ -27,6 +28,18 @@ window.addEventListener('load', async () => {
         post = response.data;
         displayPost();
     }
+});
+
+addCommentForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(addCommentForm);
+    const newComment = {
+        comment: formData.get('comment'),
+        post_id: post.id,
+    };
+
+    const response = await createComment(newComment);
+    console.log(response);
 });
 
 //display
