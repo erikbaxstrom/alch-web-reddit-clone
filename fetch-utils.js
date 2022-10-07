@@ -33,3 +33,7 @@ export async function addNewPost(newPost) {
     const response = client.from('posts').insert(newPost).single();
     return await response;
 }
+
+export async function getPosts() {
+    return 'yup, i gottem.';
+}
