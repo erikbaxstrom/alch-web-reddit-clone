@@ -4,7 +4,7 @@ export function renderPost(post) {
     const h2 = document.createElement('h2');
     const p = document.createElement('p');
 
-    a.href = `/post?id=${post.id}`;
+    a.href = `/view-post/?id=${post.id}`;
     h2.textContent = post.title;
     p.textContent = post.content;
 
