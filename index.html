@@ -11,7 +11,11 @@
         <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
 
         <!-- js -->
-        <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <!-- <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> -->
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
+        ></script>
         <script type="module" src="app.js"></script>
 
         <!-- fonts -->
@@ -34,7 +38,7 @@
             <img class="logo" src="/assets/html_css_js.png" alt="logo" />
             <p class="title">Community Forum</p>
             <nav>
-                <a href="/">Home</a>
+                <a href="/add-post">Create Post</a>
                 <a id="sign-out-link" href="auth">Sign Out</a>
             </nav>
         </header>
